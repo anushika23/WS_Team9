@@ -1,1 +1,3 @@
 # LearnGit
+
+Hello Git!
