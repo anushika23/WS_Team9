@@ -12,16 +12,16 @@ class Menu(Frame):
         self.menuFrame.pack(expand=7, fill=BOTH, side=LEFT)
         self.menuFrame.pack(pady=150)
         self.button1 = Button(self.menuFrame, text="Play!", font=(  "Lucida Handwriting", "15", "bold"), width=10, height=1,
-                              bg='brown',fg='white',command=board.start_game ,padx= 3, pady= 5, relief=RIDGE,)
+                              bg='#00b8ff',fg='white',command=board.start_game ,padx= 3, pady= 5, relief=RIDGE,)
         self.button1.pack()
         self.button2 = Button(self.menuFrame, text="Settings", font=("Lucida Handwriting", "15", "bold"), width=10, height=1,
-                              bg='brown',fg='white',command=board.show_settings,padx= 3, pady= 5, relief=RIDGE,)
+                              bg='#00b8ff',fg='white',command=board.show_settings,padx= 3, pady= 5, relief=RIDGE,)
         self.button2.pack()
         self.button3 = Button(self.menuFrame, text="Highscore", font=("Lucida Handwriting", "15", "bold"), width=10, height=1,
-                              bg='brown',fg='white',command=board.show_high_score,padx= 3, pady= 5, relief=RIDGE,)
+                              bg='#00b8ff',fg='white',command=board.show_high_score,padx= 3, pady= 5, relief=RIDGE,)
         self.button3.pack()
         self.button4 = Button(self.menuFrame, text="Exit", font=("Lucida Handwriting", "15", "bold"), width=10, height=1,
-                            bg='brown',fg='white',  command=board.game_exit, cursor="pirate",padx= 3, pady= 5, relief=RIDGE,)
+                            bg='#00b8ff',fg='white',  command=board.game_exit, cursor="pirate",padx= 3, pady= 5, relief=RIDGE,)
         self.button4.pack()
 
         self.settingsFrame = Frame(width=220, height=100, pady=160,padx=20)
@@ -94,7 +94,7 @@ class Board(Tk):
         self.textForUser.insert(END, "Welcome to checkers!")
         self.textForUser.config(state=DISABLED)
 
-        self.highScoreText = Text(self.textFrame, width=20, height=30, bg="#9db7bd", font=("verdana", "10"), wrap=WORD)
+        self.highScoreText = Text(self.textFrame, width=20, height=30, bg="#e7fdfb", font=("verdana", "10"), wrap=WORD)
 
         self.player1_name = "Player 1"
         self.player2_name = "Player 2"
