@@ -99,7 +99,7 @@ class Board(Tk):
         self.player1_name = "Player 1"
         self.player2_name = "Player 2"
 
-        self.color1 = "white"
+        self.color1 = "red"
         self.color2 = "black"
         self.board_size = 8
         self.empty_rows = 3
@@ -357,6 +357,7 @@ class Board(Tk):
         # Red and black kings have special pictures in game
         red_king = PhotoImage(file="red_king_high.gif")
         black_king = PhotoImage(file="black_king_high.gif")
+        white_king = PhotoImage(file="white_king.gif")
 
         if self.color1 == "red" and self.color2 == "black":
             if [x, y] in PlainPiece.pieces_dict[self.current_player]:
@@ -670,7 +671,7 @@ class Board(Tk):
             y1 = (j * self.cell_size)
             x2 = x1 + self.cell_size
             y2 = y1 + self.cell_size
-            color = "#aaaaaa" if i % 2 == j % 2 else "#4a5758"
+            color = "white" if i % 2 == j % 2 else "#4a5758"
             squares = self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="#aaaaaa")
             self.canvas.tag_bind(squares, "<ButtonPress-1>", self.on_click_square)
         return
