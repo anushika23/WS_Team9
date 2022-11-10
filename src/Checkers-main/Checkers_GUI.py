@@ -9,24 +9,24 @@ class Menu(Frame):
     def __init__(self):
         Frame.__init__(self)
         self.menuFrame = Frame(width=240, height=80)
-        self.menuFrame.pack(expand=1, fill=BOTH, side=TOP)
-        self.menuFrame.pack_propagate(0)
-        self.button1 = Button(self.menuFrame, text="Play!", font=("Helvetica", "10", "bold"), width=13, height=2,
-                              command=board.start_game, cursor="heart", relief=RIDGE,)
+        self.menuFrame.pack(expand=7, fill=BOTH, side=LEFT)
+        self.menuFrame.pack(pady=150)
+        self.button1 = Button(self.menuFrame, text="Play!", font=(  "Lucida Handwriting", "15", "bold"), width=10, height=1,
+                              bg='brown',fg='white',command=board.start_game ,padx= 3, pady= 5, relief=RIDGE,)
         self.button1.pack()
-        self.button2 = Button(self.menuFrame, text="Settings", font=("Helvetica", "10", "bold"), width=13, height=2,
-                              command=board.show_settings, relief=RIDGE,)
+        self.button2 = Button(self.menuFrame, text="Settings", font=("Lucida Handwriting", "15", "bold"), width=10, height=1,
+                              bg='brown',fg='white',command=board.show_settings,padx= 3, pady= 5, relief=RIDGE,)
         self.button2.pack()
-        self.button3 = Button(self.menuFrame, text="Highscore", font=("Helvetica", "10", "bold"), width=13, height=2,
-                              command=board.show_high_score, relief=RIDGE,)
+        self.button3 = Button(self.menuFrame, text="Highscore", font=("Lucida Handwriting", "15", "bold"), width=10, height=1,
+                              bg='brown',fg='white',command=board.show_high_score,padx= 3, pady= 5, relief=RIDGE,)
         self.button3.pack()
-        self.button4 = Button(self.menuFrame, text="Exit", font=("Helvetica", "10", "bold"), width=13, height=2,
-                              command=board.game_exit, cursor="pirate", relief=RIDGE,)
+        self.button4 = Button(self.menuFrame, text="Exit", font=("Lucida Handwriting", "15", "bold"), width=10, height=1,
+                            bg='brown',fg='white',  command=board.game_exit, cursor="pirate",padx= 3, pady= 5, relief=RIDGE,)
         self.button4.pack()
 
-        self.settingsFrame = Frame(width=220, height=100)
+        self.settingsFrame = Frame(width=220, height=100, pady=160,padx=20)
 
-        self.labelNames1 = Label(self.settingsFrame, text="Player Names", font="bold", relief=RIDGE)
+        self.labelNames1 = Label(self.settingsFrame, text="Player Names", font="bold", width=13, height=1, bg='light blue',fg='black',relief=RIDGE)
         self.labelNames1.grid(row=0, column=1, sticky=W)
         self.labelNames2 = Label(self.settingsFrame, text="Player 1", font="bold")
         self.labelNames2.grid(row=1, column=0, sticky=W)
@@ -43,7 +43,7 @@ class Menu(Frame):
 
         self.mode = IntVar()
 
-        self.labelMode = Label(self.settingsFrame, text="Game Mode", font="bold", relief=RIDGE)
+        self.labelMode = Label(self.settingsFrame, text="Game Mode", font="bold",width=13, height=1, bg='light blue',fg='black', relief=RIDGE)
         self.labelMode.grid(row=5, column=1, sticky=W)
         self.radioButtonMode1 = Radiobutton(self.settingsFrame, text="Player vs Player", variable=self.mode, value=1)
         self.radioButtonMode1.grid(row=6, column=1, sticky=W)
@@ -52,7 +52,7 @@ class Menu(Frame):
 
         self.board_size_ = IntVar()
 
-        self.labelSize = Label(self.settingsFrame, text="Board Size", font="bold", relief=RIDGE)
+        self.labelSize = Label(self.settingsFrame, text="Board Size",width=13, height=1, bg='light blue',fg='black', font="bold", relief=RIDGE)
         self.labelSize.grid(row=9, column=1, sticky=W)
         self.radioButtonSize1 = Radiobutton(self.settingsFrame, text="8x8", variable=self.board_size_, value=8)
         self.radioButtonSize1.grid(row=10, column=1, sticky=W)
@@ -61,7 +61,7 @@ class Menu(Frame):
 
         self.piece_color = IntVar()
 
-        self.labelColor = Label(self.settingsFrame, text="Piece Color", font="bold", relief=RIDGE)
+        self.labelColor = Label(self.settingsFrame, text="Piece Color", width=13, height=1, bg='light blue',fg='black',font="bold", relief=RIDGE)
         self.labelColor.grid(row=12, column=1, sticky=W)
         self.radioButtonColor1 = Radiobutton(self.settingsFrame, text="Red and Black",
                                              variable=self.piece_color, value=1)
@@ -89,17 +89,17 @@ class Board(Tk):
 
         self.textFrame = Frame(width=200, height=20)
         self.textFrame.pack(expand=1, fill=BOTH, side=RIGHT)
-        self.textForUser = Text(self.textFrame, width=20, height=4, bg="bisque", font=("verdana", "10"), wrap=WORD)
+        self.textForUser = Text(self.textFrame, width=20, height=4,  font=("Lucida Handwriting", "20"), wrap=WORD , borderwidth=0)
         self.textForUser.pack()
         self.textForUser.insert(END, "Welcome to checkers!")
         self.textForUser.config(state=DISABLED)
 
-        self.highScoreText = Text(self.textFrame, width=20, height=30, bg="bisque", font=("verdana", "10"), wrap=WORD)
+        self.highScoreText = Text(self.textFrame, width=20, height=30, bg="#9db7bd", font=("verdana", "10"), wrap=WORD)
 
         self.player1_name = "Player 1"
         self.player2_name = "Player 2"
 
-        self.color1 = "red"
+        self.color1 = "white"
         self.color2 = "black"
         self.board_size = 8
         self.empty_rows = 3
@@ -670,8 +670,8 @@ class Board(Tk):
             y1 = (j * self.cell_size)
             x2 = x1 + self.cell_size
             y2 = y1 + self.cell_size
-            color = "bisque" if i % 2 == j % 2 else "burlywood4"
-            squares = self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="bisque4")
+            color = "#aaaaaa" if i % 2 == j % 2 else "#4a5758"
+            squares = self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="#aaaaaa")
             self.canvas.tag_bind(squares, "<ButtonPress-1>", self.on_click_square)
         return
 
@@ -699,7 +699,6 @@ class Board(Tk):
 
         :return: (nothing)
         '''
-
         for player in PlainPiece.pieces_dict:
             for coordinate in PlainPiece.pieces_dict[player]:
                 x1 = (coordinate[0] * self.cell_size)
